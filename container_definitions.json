@@ -1,0 +1,41 @@
+[
+  {
+    "name": "bench",
+    "image": "showwin/ishocon2_bench_for_contest",
+    "cpu": 0,
+    "memory": 128,
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "hostPort": 80,
+        "protocol": "tcp"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "${region}",
+        "awslogs-group": "/${name}/ecs",
+        "awslogs-stream-prefix": "bench"
+      }
+    },
+    "environment": [
+      {
+        "name": "FIREBASE_URL",
+        "value": "${firebase_url}"
+      },
+      {
+        "name": "MYSQL_USER",
+        "value": "${database_username}"
+      },
+      {
+        "name": "MYSQL_PASS",
+        "value": "${database_password}"
+      },
+      {
+        "name": "MYSQL_HOST",
+        "value": "${database_address}"
+      }
+    ]
+  }
+]
